@@ -1,0 +1,5 @@
+@charset "ISO-8859-1";
+.inter-img:hover {
+	opacity:.5;
+	transition:.5s;
+}
