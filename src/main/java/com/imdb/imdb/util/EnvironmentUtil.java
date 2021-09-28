@@ -12,16 +12,19 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.io.Resources;
 
+@Deprecated
 @Component
 public class EnvironmentUtil {
 	private Properties prop;
-	private URL url = Resources.getResource("application.properties");
-    private File file = new File(url.getPath());
+	private URL url ;
+    private File file;
     private InputStream inputStream;
     
 	
 	public EnvironmentUtil() {
 		this.prop = new Properties();
+		this.url = Resources.getResource("application.properties");
+		this.file = new File(url.getPath());
 	}
 	
 	public String getProperty(String key) throws IOException {

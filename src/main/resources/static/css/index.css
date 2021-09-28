@@ -1,5 +1,92 @@
-@charset "ISO-8859-1";
+* {
+	padding: 10px;
+}
 .inter-img:hover {
 	opacity:.5;
 	transition:.5s;
+}
+.rel {
+	 position: relative;
+
+
+
+}
+.abs {
+	position: absolute;
+	  top: 200px;
+	  right:10;
+	  left:70px;
+	  
+}
+
+.mister-button {
+	display:none;
+}
+
+.style-img {
+	border:5px solid pink;
+}
+
+.title {
+	font-size:17px;
+}
+.header-item {
+	display: inline;
+	list-style-type: none;
+	
+}
+
+.header {
+	background-color:black;
+	border:none;
+	border-radius: 5px;
+	/* overflow: hidden; */
+}
+.footer {
+	background-color: black;
+	padding:10px;
+	color:white;
+	text-align: center;
+}
+
+.header-item-logo {
+	list-style-type: none;
+	display: inline;
+}
+.logo-image {
+	border-radius: 50%;
+	height: 70px;
+}
+.rating-area {
+	width: 240px;
+	border:1px solid red;
+	margin-top:5px;
+}
+
+
+
+/* This is the extra part for particles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 
+      'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.heading {
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    width: 100%;
+}
+.heading h1 {
+    color: limegreen;
+    font-size: 70px;
+}
+.heading h3 {
+    color: wheat;
+    font-size: 20px;
+}
+#particles-js {
+	background-color: #fff1cc;
+    height: 100vh;
 }

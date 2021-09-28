@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="ISO-8859-1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<link th:href="@{/css/index.css}" rel = "stylesheet">
+	<script type = "text/javascript" th:src = "@{/js/particles.js}"></script>
+	<script type = "text/javascript" th:src="@{/js/demo/js/app.js}"></script>
+	<!-- <script type = "text/javascript" th:src="@{/js/main.js}"></script> -->
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+	<script>
+		$(document).read(()=> {
+			$(".inter-img").hover(()=>{
+				alert("Hello world");
+				$(".mister-button").css("display","show");
+			},()=> {
+				$("mister-button").css("display","hide");
+			});
+			
+		});
+		$(document).ready(()=>alert("hello"));
+	</script>
+
+	<title>IMDB rating app</title>
+	</head>
+	<body id = "particles-js">
+		<div class = "header">
+			<li class = "header-item-logo rounded-circle logo"><img class = "logo-image" src = "https://i.pinimg.com/originals/dc/ab/b7/dcabb7fbb2f763d680d20a3d228cc6f9.jpg"></li>
+			<li class = "header-item  float-right"><form th:action = "@{/search}"><input class ="form-control" aria-label="title" type="text" name = "title" id = "title" placeholder="type something"></form></li>
+		</div>
+
+		<!-- This is the part where all the data will be shown from the api -->
+		<div class = "row">
+			<div class = "col-sm-3">
+				<img th:src = "${jsonObj.get('image').asText()}" width = "240px" height = "440px" class = "style-img">
+				<div class = "rating-area">
+					<span>Imdbratin: </span> <span th:text = "${jsonObj.get('imDbRating').asText()}"></span><br>
+					<span>Content Rating: </span> <span th:text = "${jsonObj.get('contentRating').asText()}"></span><br>
+					<span>Metacritic rating : </span> <span th:text = "${jsonObj.get('metacriticRating').asText()}"></span> <br>
+
+				</div>
+			</div>
+			<div class = "col-sm-6">
+				<div>
+					<h4>Title: </h4><span class = "title" th:text="${jsonObj.get('title').asText()}"></span>
+					<h4>Date: </h4><span th:text = "${jsonObj.get('releaseDate').asText()}"></span> 
+					<h4>Type of content : </h4> <span th:text = "${jsonObj.get('type').asText()}"></span>
+					<h4>PLot : </h4><p style = "text-align: justify;" th:text = "${jsonObj.get('plot').asText()}"></p>
+					<h4>Director : </h4> <span th:text = "${jsonObj.get('directors').asText()}"></span>
+					<h4>Actors :</h4> <span th:text = "${jsonObj.get('stars').asText()}"></span>
+					<h4>Awards : </h4> <span th:text = "${jsonObj.get('awards').asText()}"></span>
+					
+				</div>
+			</div>
+
+		</div>
+		<!-- Api Section ended -->
+
+		<div style = "background-color: black;padding:10px;"><iframe width="100%" height="315" src="https://www.youtube.com/embed/t3po4O7wEWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+		<div name = "footer" class = "footer">
+			<p>Copyright &copy from 2021 <a href = "http://www.imdbrating.com" target= "_blank">http://www.imdbrating.com</a></p>
+		</div>
+
+	</body>
+</html>

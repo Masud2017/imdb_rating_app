@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="ISO-8859-1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<link th:href="@{/css/index.css}" rel = "stylesheet">
+	<script type = "text/javascript" th:src = "@{/js/particles.js}"></script>
+	<script type = "text/javascript" th:src="@{/js/demo/js/app.js}"></script>
+	<!-- <script type = "text/javascript" th:src="@{/js/main.js}"></script> -->
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+	<script>
+		$(document).read(()=> {
+			$(".inter-img").hover(()=>{
+				alert("Hello world");
+				$(".mister-button").css("display","show");
+			},()=> {
+				$("mister-button").css("display","hide");
+			});
+			
+		});
+		$(document).ready(()=>alert("hello"));
+	</script>
+
+	<title>IMDB rating app</title>
+	</head>
+	<body id = "particles-js">
+		<div class = "header">
+			<li class = "header-item-logo rounded-circle logo"><img class = "logo-image" src = "https://i.pinimg.com/originals/dc/ab/b7/dcabb7fbb2f763d680d20a3d228cc6f9.jpg"></li>
+			<li class = "header-item  float-right"><form th:action = "@{/search}"><input class ="form-control" aria-label="Title" type="text" name = "title" id = "title" placeholder="type something"></form></li>
+		</div>
+
+        <div name = "body">
+            <h1>This is the home of "IMDB Rating App"</h1>
+        </div>
+
+		<div name = "footer" class = "footer">
+			<p>Copyright &copy from 2021 <a href = "http://www.imdbrating.com" target= "_blank">http://www.imdbrating.com</a></p>
+		</div>
+
+	</body>
+</html>

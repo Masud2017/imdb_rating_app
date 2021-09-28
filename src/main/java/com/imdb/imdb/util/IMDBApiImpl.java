@@ -6,23 +6,31 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpResponse;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
+@Component
+@PropertySource("classpath:application.properties")
 public class IMDBApiImpl implements IMDBApi{
-	@Value("${imdb.api.key}")
-	private String imdbApiKey;
+	private Logger logger = LoggerFactory.getLogger(IMDBApiImpl.class);
+	@Value("${api2.imdb}")
+	private String apiKey;
 	
 //	private String mainUrl = "https://imdb-api1.p.rapidapi.com/";
-	private HttpClient client = HttpClient.newHttpClient();
+	private HttpClient client;
 	private HttpRequest httpReq;
 	private HttpResponse<String> response;
 	
+	public IMDBApiImpl() {
+		this.client = HttpClient.newHttpClient();
+	}
 
 	@Override
 	public Object searchByTitle(String title) {
-		System.out.println("\n\n\n"+this.imdbApiKey);
-		this.httpReq = HttpRequest.newBuilder().uri(URI.create("https://imdb-api1.p.rapidapi.com/Title/k_uvrfhv0c/tt0050083"))
+		this.httpReq = HttpRequest.newBuilder().uri(URI.create("https://imdb-api1.p.rapidapi.com/Title/"+this.apiKey+"/"+title))
 				.header("x-rapidapi-host", "imdb-api1.p.rapidapi.com")
 				.header("x-rapidapi-key", "e36f1e6155mshff1726076963dcbp1c7f3djsne9d31088f5e0")
 				.method("GET", HttpRequest.BodyPublishers.noBody())
@@ -30,15 +38,13 @@ public class IMDBApiImpl implements IMDBApi{
 		try {
 			this.response = this.client.send(httpReq, HttpResponse.BodyHandlers.ofString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		System.out.println(this.response.body());
 		return response.body();
 	}
+
 
 	@Override
 	public Object searchById(long id) {
